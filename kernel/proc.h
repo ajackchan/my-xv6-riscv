@@ -82,6 +82,8 @@ struct trapframe {
 
 enum procstate { UNUSED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
+#define MASK_SIZE 24
+
 // Per-process state
 struct proc {
   struct spinlock lock;
@@ -104,4 +106,5 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
   uint64 syscall_trace;        // Mask for syscall tracing
+  // char mask[MASK_SIZE];        // Trace Mask
 };
